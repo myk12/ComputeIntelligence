@@ -9,6 +9,7 @@ def logger_init_center(centers, filename):
         
         for center in centers:
             logfd.write(str(center) + '\n')
+            print(str(center) + '\n')
 
         logfd.write(line_end)
 

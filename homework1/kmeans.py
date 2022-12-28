@@ -1,3 +1,5 @@
+# Kmeans cluster
+
 import numpy as np
 import random
 import utils
@@ -18,7 +20,7 @@ with open(filename_log, "w") as logfd:
 
 # -------------------- start cluster -----------------
 
-# random chose centers
+# random chose centers 初始化聚类中心
 choice = np.random.choice(samples_num, cluster_num)
 centers = samples[choice]
 
@@ -32,7 +34,7 @@ while it < max_iter:
     print("iteartion : %d" %it)
     clusters_ = [set() for _ in range(cluster_num)]
     
-    # start cluster
+    # start cluster 开始聚类
     for i in range(samples_num):
         sample = samples[i]
         parallel = np.tile(sample, (cluster_num, 1))
@@ -45,7 +47,7 @@ while it < max_iter:
         clusters_[minidx].add(i)
         c_label[i] = minidx
 
-    # recalculate centers
+    # recalculate centers 更新类中心点
     static = True
     for i in range(cluster_num):
         c, c_ = clusters[i], clusters_[i]
